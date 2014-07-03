@@ -12,29 +12,29 @@ All coders are welcome! I am sure there are allot of improvements that can be ma
 Configuration
 =============
 
-[ftp]  
-addr=mybooklive  
-port=21  
-user=admin  
-pass=secret  
-  
+[ftp]  <br>
+addr=mybooklive   <br> 
+port=21    <br>
+user=admin    <br>
+pass=secret    <br>
+    <br>
 [tv]  
-local=D:\Media\complete\TV  
-remote=/Public/Shared Videos/TV  
-ignore=Elementary -,Revenge -  
-accept=.mp4,.m2ts,.avi  
-  
-[movies]  
-local=D:\Media\complete\Movies  
-remote=/Public/Shared Videos/Movies  
-accept=.mp4,.avi,.m2ts,.jpg  
-  
-[music]  
-local=D:\Media\complete\hp  
-remote=/Public/Shared Music/Music  
-accept=.mp3,.jpg  
-  
-  
+local=D:\Media\complete\TV    <br>
+remote=/Public/Shared Videos/TV    <br>
+ignore=Elementary -,Revenge -    <br>
+accept=.mp4,.m2ts,.avi    <br>
+    <br>
+[movies]    <br>
+local=D:\Media\complete\Movies    <br>
+remote=/Public/Shared Videos/Movies    <br>
+accept=.mp4,.avi,.m2ts,.jpg    <br>
+    <br>
+[music]    <br>
+local=D:\Media\complete\hp    <br>
+remote=/Public/Shared Music/Music    <br>
+accept=.mp3,.jpg    <br>
+    <br>
+    <br>
 NAS_Sync requires a config.ini file, it MUST be located in the same folder as the NAS_Sync executable. Above is an example configuration.
 The ftp section is mandatory, how else will it upload your files to the NAS Drive??
 The sections below the ftp section, will be considered category's. This tells NAS_Sync where to look for media files, and where to store them on the remote FTP server (NAS Drive).
