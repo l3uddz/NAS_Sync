@@ -12,8 +12,8 @@ All coders are welcome! I am sure there are allot of improvements that can be ma
 Configuration
 =============
 
-[ftp]
-addr=mybooklive
+[ftp]<br>
+addr=mybooklive<br>
 port=21
 user=admin
 pass=secret
