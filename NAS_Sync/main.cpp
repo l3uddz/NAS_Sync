@@ -1,5 +1,4 @@
 #include "core.h"
-#include <atlstr.h>
 
 LPSTR lpszSearch_Folder = NULL;
 LPSTR lpszServer_Addr = NULL;
