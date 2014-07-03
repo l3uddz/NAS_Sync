@@ -1,5 +1,6 @@
 #include "core.h"
 
+// This function will connect to the specified FTP server
 BOOL FTP::Connect(LPSTR lpszServer, DWORD dwPort, LPSTR lpszUsername, LPSTR lpszPassword)
 {
 	BOOL mRet = FALSE;
@@ -38,6 +39,8 @@ finish:
 	return mRet;
 }
 
+// This function will UPLOAD the specified file, first it will attempt to create the directory pointed to
+// by lpszRemoteFolder - it will then attempt to upload the file (lpszLocalFile -> lpszRemoteFile)
 BOOL FTP::TransferFile(LPSTR lpszLocalFile, LPSTR lpszRemoteFile, LPSTR lpszRemoteFolder)
 {
 	BOOL mRet = FALSE;
@@ -64,6 +67,8 @@ finish:
 	return mRet;
 }
 
+// This function will create a directory(s) specified in the lpszRemoteFolder variable
+// It will create multiple directories if required (to create the lpszRemoteFolder)
 BOOL FTP::CreateDirectory(LPSTR lpszRemoteFolder)
 {
 	BOOL mRet = FALSE;
