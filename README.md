@@ -12,43 +12,43 @@ All coders are welcome! I am sure there are allot of improvements that can be ma
 Configuration
 =============
 
-[ftp]<br>
-addr=mybooklive<br>
-port=21
-user=admin
-pass=secret
-
-[tv]
-local=D:\Media\complete\TV
-remote=/Public/Shared Videos/TV
-ignore=Elementary -,Revenge -
-accept=.mp4,.m2ts,.avi
-
-[movies]
-local=D:\Media\complete\Movies
-remote=/Public/Shared Videos/Movies
-accept=.mp4,.avi,.m2ts,.jpg
-
-[music]
-local=D:\Media\complete\hp
-remote=/Public/Shared Music/Music
-accept=.mp3,.jpg
-
-
+[ftp]  
+addr=mybooklive  
+port=21  
+user=admin  
+pass=secret  
+  
+[tv]  
+local=D:\Media\complete\TV  
+remote=/Public/Shared Videos/TV  
+ignore=Elementary -,Revenge -  
+accept=.mp4,.m2ts,.avi  
+  
+[movies]  
+local=D:\Media\complete\Movies  
+remote=/Public/Shared Videos/Movies  
+accept=.mp4,.avi,.m2ts,.jpg  
+  
+[music]  
+local=D:\Media\complete\hp  
+remote=/Public/Shared Music/Music  
+accept=.mp3,.jpg  
+  
+  
 NAS_Sync requires a config.ini file, it MUST be located in the same folder as the NAS_Sync executable. Above is an example configuration.
 The ftp section is mandatory, how else will it upload your files to the NAS Drive??
 The sections below the ftp section, will be considered category's. This tells NAS_Sync where to look for media files, and where to store them on the remote FTP server (NAS Drive).
 The "local/remote/accept" settings are mandatory! The "ignore" setting is optional.
-
+  
 Please note:
 All files that are uploaded, are uploaded based on the location/structure the file was found at/in. So as an example, based on the tv category above, NAS_Sync has found the following file:
 D:\Media\complete\TV\Crossbones\Season 01\Crossbones - 1x01 - Episode Name.mp4
 This will be uploaded to /Public/Shared Videos/TV/Crossbones/Season 01/Crossbones - 1x01 - Episode Name.mp4
 If the Crossbones/Season 01 folder does not exist, they will be created and the upload will commence.
-
+  
 Logic
 =====
-
+  
 NAS_Sync will build a vector/list of all media files found in the folder specified via the "local" setting, based on the category you have told it to use (you will be asked which category you want to use upon executing NAS_Sync.exe).
 It will then connect to the FTP server and traverse the found media files vector/list, performing some very basic checks to determine if the file should be skipped or uploaded.
 First it will check whether the local media files remote folder exists (e.g. /Public/Shared Videos/TV/Crossbones/Season 01), if they do not, then it is deemed the file should be uploaded, if the folders do exist, it will then traverse the folder to check whether the file is already uploaded.. If NAS_Sync finds the media file is already stored on the FTP server, it will perform a size comparison, if the sizes match then the file is skipped whereas if the sizes do not match it is deemed that the file should be uploaded (overwriting the file that is already stored on the FTP server).
