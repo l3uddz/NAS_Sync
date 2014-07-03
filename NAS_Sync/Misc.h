@@ -1,0 +1,1 @@
+int ANSIToUTF8(char *pszCode, char *UTF8code);
