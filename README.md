@@ -41,7 +41,7 @@ The sections below the ftp section, will be considered category's. This tells NA
 The "local/remote/accept" settings are mandatory! The "ignore" setting is optional.
   
 Please note:
-All files that are uploaded, are uploaded based on the location/structure the file was found at/in. So as an example, based on the tv category above, NAS_Sync has found the following file:
+All files that are uploaded, are uploaded based on the location/structure the file was found at/in. So as an example, based on the tv category above, NAS_Sync has found the following file:<br>
 D:\Media\complete\TV\Crossbones\Season 01\Crossbones - 1x01 - Episode Name.mp4<br>
 This will be uploaded to 
 /Public/Shared Videos/TV/Crossbones/Season 01/Crossbones - 1x01 - Episode Name.mp4  
