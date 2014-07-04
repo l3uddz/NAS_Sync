@@ -42,8 +42,9 @@ The "local/remote/accept" settings are mandatory! The "ignore" setting is option
   
 Please note:
 All files that are uploaded, are uploaded based on the location/structure the file was found at/in. So as an example, based on the tv category above, NAS_Sync has found the following file:
-D:\Media\complete\TV\Crossbones\Season 01\Crossbones - 1x01 - Episode Name.mp4
-This will be uploaded to /Public/Shared Videos/TV/Crossbones/Season 01/Crossbones - 1x01 - Episode Name.mp4
+D:\Media\complete\TV\Crossbones\Season 01\Crossbones - 1x01 - Episode Name.mp4<br>
+This will be uploaded to 
+/Public/Shared Videos/TV/Crossbones/Season 01/Crossbones - 1x01 - Episode Name.mp4  
 If the Crossbones/Season 01 folder does not exist, they will be created and the upload will commence.
   
 Logic
@@ -118,7 +119,7 @@ Accepted: Marvel's Agents of S.H.I.E.L.D. - 1x22 - Beginning of the End.mp4<br>
 Accepted: NCIS- Los Angeles - 5x24 - Deep Trouble (1).mp4<br>
 Accepted: Once Upon a Time (2011) - 3x21-22 - Snow Drifts + There's No Place Like Home.mp4<br>
 Accepted: Penny Dreadful - 1x01 - Night Work.mp4<br>
-Accepted: Penny Dreadful - 1x02 - SÚance.mp4<br>
+Accepted: Penny Dreadful - 1x02 - Suance.mp4<br>
 Accepted: Penny Dreadful - 1x03 - Resurrection.mp4<br>
 Accepted: Penny Dreadful - 1x04 - Demimonde.mp4<br>
 Accepted: Penny Dreadful - 1x05 - Closer Than Sisters.mp4<br>
