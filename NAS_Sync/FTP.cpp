@@ -39,6 +39,7 @@ finish:
 	return mRet;
 }
 
+// This function will send the QUIT command to the FTP server and if successful, close the handles opened with Connect(..)
 BOOL FTP::Disconnect()
 {
 	BOOL mRet = FALSE;
@@ -47,8 +48,14 @@ BOOL FTP::Disconnect()
 	if (hSession == NULL)
 		return TRUE;
 
-	mRet = FtpCommandA(hSession, FALSE, 0, szQuit, 0, NULL);
-
+	if ((mRet = FtpCommandA(hSession, FALSE, 0, szQuit, 0, NULL)) == TRUE) 
+	{
+		if (hSession)
+			InternetCloseHandle(hSession);
+		if (hInternet)
+			InternetCloseHandle(hInternet);
+	}
+		
 	return mRet;
 }
 
