@@ -39,6 +39,19 @@ finish:
 	return mRet;
 }
 
+BOOL FTP::Disconnect()
+{
+	BOOL mRet = FALSE;
+	CHAR szQuit[] = "QUIT";
+
+	if (hSession == NULL)
+		return TRUE;
+
+	mRet = FtpCommandA(hSession, FALSE, 0, szQuit, 0, NULL);
+
+	return mRet;
+}
+
 // This function will UPLOAD the specified file, first it will attempt to create the directory pointed to
 // by lpszRemoteFolder - it will then attempt to upload the file (lpszLocalFile -> lpszRemoteFile)
 BOOL FTP::TransferFile(LPSTR lpszLocalFile, LPSTR lpszRemoteFile, LPSTR lpszRemoteFolder)

@@ -3,6 +3,7 @@ class FTP
 {
 public:
 	BOOL Connect(LPSTR lpszServer, DWORD dwPort, LPSTR lpszUsername, LPSTR lpszPassword);
+	BOOL Disconnect();
 	BOOL TransferFile(LPSTR lpszLocalFile, LPSTR lpszRemoteFile, LPSTR lpszRemoteFolder);
 	BOOL CreateDirectory(LPSTR lpszRemoteFolder);
 	DWORD FileSize(LPSTR lpszRemoteFilePath);

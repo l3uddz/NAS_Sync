@@ -1,4 +1,5 @@
 #include "core.h"
+#include <atlstr.h>
 
 LPSTR lpszSearch_Folder = NULL;
 LPSTR lpszServer_Addr = NULL;
@@ -14,6 +15,7 @@ int main()
 {
 	FTP client;
 	CHAR szCategory[MAX_PATH] = { 0 };
+	DWORD dwPos = 0;
 
 	// Load configuration settings
 	lpszServer_Addr = Config::ReadString("ftp", "addr");
@@ -52,14 +54,14 @@ int main()
 	
 		BOOL mUploaded = FALSE, mShouldUpload = FALSE;
 
-		for (int x = 0; x < (int)mediaFiles.size(); x++)
+		for (dwPos = 0; dwPos < mediaFiles.size(); dwPos++)
 		{
-			mShouldUpload = client.ShouldUploadFile(mediaFiles[x]);
+			mShouldUpload = client.ShouldUploadFile(mediaFiles[dwPos]);
 			if (mShouldUpload == TRUE) 
 			{
-				printf("Uploading: %s... ", mediaFiles[x].lpszFileName);
+				printf("Uploading: %s... ", mediaFiles[dwPos].lpszFileName);
 		
-				mUploaded = client.TransferFile(mediaFiles[x].lpszAltLocalPath, mediaFiles[x].lpszRemotePath, mediaFiles[x].lpszRemoteFolder);
+				mUploaded = client.TransferFile(mediaFiles[dwPos].lpszAltLocalPath, mediaFiles[dwPos].lpszRemotePath, mediaFiles[dwPos].lpszRemoteFolder);
 				if (mUploaded == TRUE)
 				{
 					printf("SUCCESS!\n");
@@ -72,16 +74,44 @@ int main()
 
 		}
 	}
+	Sleep(1000);
+	if (client.Disconnect())
+		printf("Successfully disconnected!\n");
+	else
+		printf("Error disconnecting...\n");
+
+	printf("\nSkipped %d files\nUploaded %d files!\n\n", nFilesSkipped, nFilesUploaded);
+
+
+
 		
-	printf("\nSkipped %d files\nUploaded %d files!\n", nFilesSkipped, nFilesUploaded);
 
 finish:
 
-	if (lpszServer_Addr) Mem::Free(lpszServer_Addr);
-	if (lpszServer_User) Mem::Free(lpszServer_User);
-	if (lpszServer_Pass) Mem::Free(lpszServer_Pass);
-	if (lpszSearch_Folder) Mem::Free(lpszSearch_Folder);
+	for (dwPos = 0; dwPos < mediaFiles.size(); dwPos++)
+	{
+		if (mediaFiles[dwPos].lpszAltLocalPath)
+			Mem::Free(mediaFiles[dwPos].lpszAltLocalPath);
+		if (mediaFiles[dwPos].lpszFileName)
+			Mem::Free(mediaFiles[dwPos].lpszFileName);
+		if (mediaFiles[dwPos].lpszLocalPath)
+			Mem::Free(mediaFiles[dwPos].lpszLocalPath);
+		if (mediaFiles[dwPos].lpszRemoteFolder)
+			Mem::Free(mediaFiles[dwPos].lpszRemoteFolder);
+		if (mediaFiles[dwPos].lpszRemotePath)
+			Mem::Free(mediaFiles[dwPos].lpszRemotePath);
+	}
 
+	if (lpszSearch_Folder)
+		Mem::Free(lpszSearch_Folder);
+	if (lpszServer_Addr)
+		Mem::Free(lpszServer_Addr);
+	if (lpszServer_User)
+		Mem::Free(lpszServer_User);
+	if (lpszServer_Pass)
+		Mem::Free(lpszServer_Pass);
+
+	printf("Cleanup completed...\n");
 	system("pause");
 	return 0;
 }
