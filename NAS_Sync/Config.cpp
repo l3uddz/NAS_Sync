@@ -4,14 +4,18 @@ LPSTR lpszConfig_Path = NULL;
 
 LPSTR Config::GetConfigPath()
 {
-	LPSTR lpszConfig = NULL;
+	LPSTR lpszConfig = NULL, lpszTmp = NULL;
 	CHAR  szModulePath[MAX_PATH] = { 0 };
 	DWORD dwConfigSize = 0;
 
-	if ((dwConfigSize = GetCurrentDirectoryA(sizeof(szModulePath) - 1, szModulePath)) <= 0)
+	if ((dwConfigSize = GetModuleFileNameA(NULL, szModulePath, sizeof(szModulePath) - 1)) <= 0)
 		return NULL;
 
-	dwConfigSize += 13;
+	if ((lpszTmp = strrchr(szModulePath, '\\')) == NULL)
+		return NULL;
+	lpszTmp[0] = '\0';
+
+	dwConfigSize = lstrlenA(szModulePath) + 13;
 	if ((lpszConfig = (LPSTR)Mem::Alloc(dwConfigSize)) == NULL)
 		return NULL;
 
@@ -37,7 +41,7 @@ LPSTR Config::ReadString(LPSTR lpszSection, LPSTR lpszSetting)
 		return NULL;
 	}
 
-	if ((lpszRet = (LPSTR)Mem::Alloc(dwTmp)) == NULL)
+	if ((lpszRet = (LPSTR)Mem::Alloc(dwTmp+1)) == NULL)
 		return NULL;
 
 	lstrcpyA(lpszRet, szTmp);

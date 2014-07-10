@@ -45,7 +45,7 @@ int main()
 	lpszSearch_Folder = Config::ReadString(szCategory, "local");
 
 	printf("Scanning for media in: \"%s\"\n\n", lpszSearch_Folder);
-	int nTotal = Media::Search(lpszSearch_Folder);
+	INT nTotal = Media::Search(lpszSearch_Folder);
 	printf("\nTotal files accepted: %d\n\n", nTotal);
 
 	if (client.Connect(lpszServer_Addr, dwServer_Port, lpszServer_User, lpszServer_Pass))
@@ -67,14 +67,13 @@ int main()
 					nFilesUploaded++;
 				}
 
-			}
-			else
+			} else
 				nFilesSkipped++;
 
 		}
 	}
 	Sleep(1000);
-	if (client.Disconnect())
+	if (client.Disconnect() == TRUE)
 		printf("Successfully disconnected!\n");
 	else
 		printf("Error disconnecting...\n");
@@ -99,7 +98,9 @@ finish:
 			Mem::Free(mediaFiles[dwPos].lpszRemoteFolder);
 		if (mediaFiles[dwPos].lpszRemotePath)
 			Mem::Free(mediaFiles[dwPos].lpszRemotePath);
+
 	}
+	mediaFiles.erase(mediaFiles.begin(), mediaFiles.begin() + mediaFiles.size());
 
 	if (lpszSearch_Folder)
 		Mem::Free(lpszSearch_Folder);

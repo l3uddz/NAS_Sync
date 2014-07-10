@@ -70,10 +70,12 @@ BOOL FTP::TransferFile(LPSTR lpszLocalFile, LPSTR lpszRemoteFile, LPSTR lpszRemo
 	dwErrorSize = sizeof(szErrorMsg) - 1;
 
 	mRet = this->CreateDirectory(lpszRemoteFolder);
-	if (mRet == FALSE) goto finish;
+	if (mRet == FALSE)
+		goto finish;
 
 	mRet = FtpPutFileA(hSession, lpszLocalFile, lpszRemoteFile, FTP_TRANSFER_TYPE_BINARY, 0);
-	if (mRet == FALSE) {
+	if (mRet == FALSE)
+	{
 		dwError = GetLastError();
 		InternetGetLastResponseInfoA(&dwError, szErrorMsg, &dwErrorSize);
 		printf("ERROR\nFtpPutFile, Code: %d Info:\n%s\n", dwError, szErrorMsg);
@@ -109,7 +111,8 @@ BOOL FTP::CreateDirectory(LPSTR lpszRemoteFolder)
 		if (mRet == FALSE)
 		{
 			// Lets try to create the directory...
-			if (FtpCreateDirectoryA(hSession, pch) == FALSE) {
+			if (FtpCreateDirectoryA(hSession, pch) == FALSE)
+			{
 				dwError = GetLastError();
 				InternetGetLastResponseInfoA(&dwError, szErrorMsg, &dwErrorSize);
 				printf("ERROR\nFtpCreateDirectory, Code: %d Info:\n%s\n", dwError, szErrorMsg);
@@ -117,7 +120,8 @@ BOOL FTP::CreateDirectory(LPSTR lpszRemoteFolder)
 
 			}
 			else {
-				if ((mRet = FtpSetCurrentDirectoryA(hSession, pch)) == FALSE) {
+				if ((mRet = FtpSetCurrentDirectoryA(hSession, pch)) == FALSE)
+				{
 					dwError = GetLastError();
 					InternetGetLastResponseInfoA(&dwError, szErrorMsg, &dwErrorSize);
 					printf("ERROR\nFtpSetCurrentDirectory, Code: %d Info:\n%s\n", dwError, szErrorMsg);
@@ -182,8 +186,7 @@ BOOL FTP::ShouldUploadFile(_mediaFile media)
 			{
 				mRet = FALSE;
 				goto finish;
-			} else 
-			{
+			} else {
 				mRet = TRUE;
 				goto finish;
 			}
