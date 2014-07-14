@@ -80,8 +80,6 @@ int main()
 
 	printf("\nSkipped %d files\nUploaded %d files!\n\n", nFilesSkipped, nFilesUploaded);
 
-
-
 		
 
 finish:

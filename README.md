@@ -21,7 +21,7 @@ pass=secret<br>
 [tv]<br>
 local=D:\Media\complete\TV<br>
 remote=/Public/Shared Videos/TV<br>
-ignore=Elementary -,Revenge -<br>
+ignore=\Elementary -,\Revenge -<br>
 accept=.mp4,.m2ts,.avi<br>
 <br>
 [movies]<br>
